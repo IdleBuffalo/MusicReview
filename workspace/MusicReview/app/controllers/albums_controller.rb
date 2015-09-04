@@ -1,30 +1,26 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
-  # GET /albums
-  # GET /albums.json
   def index
     @albums = Album.all
   end
 
-  # GET /albums/1
-  # GET /albums/1.json
+
   def show
   end
 
-  # GET /albums/new
+
   def new
-    @album = Album.new
+    @album = current_user.albums.build
   end
 
-  # GET /albums/1/edit
   def edit
   end
 
-  # POST /albums
-  # POST /albums.json
+
   def create
-    @album = Album.new(album_params)
+    @album = current_user.albums.build(album_params)
 
     respond_to do |format|
       if @album.save
@@ -37,8 +33,7 @@ class AlbumsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /albums/1
-  # PATCH/PUT /albums/1.json
+
   def update
     respond_to do |format|
       if @album.update(album_params)
@@ -51,8 +46,7 @@ class AlbumsController < ApplicationController
     end
   end
 
-  # DELETE /albums/1
-  # DELETE /albums/1.json
+
   def destroy
     @album.destroy
     respond_to do |format|
