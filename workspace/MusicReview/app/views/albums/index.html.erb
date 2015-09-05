@@ -1,36 +1,18 @@
-<p id="notice"><%= notice %></p>
+<% if !user_signed_in? %>
+  <div class="jumbotron">
+    <h1>White Indie bands</h1>
+    <p>When media reflects stereotypes, it reinforces them: it is on every writer to have an open mind, to write about music and people who challenge them, and to recognize that means less room for letting white mediocrity slide. Covering another white rock album or another black hip-hop album is an act of boundary-keeping: one by one, these decisions, like many in arts writing, are subjective. But in aggregate, like the Silicon Valley start-ups that can’t understand how they’ve hired so many white men, the bias is the decision. </p>
+    <p><%= link_to "Sign Up To Write a Review", new_user_registration_path, class: 'btn btn-primary btn-lg' %></p>
+  </div>
+<% end %>
 
-<h1>Listing Albums</h1>
+<div class="row">
+  <% @albums.each do |album |%>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= link_to (image_tag album.image.url(:medium), class: 'image'), album %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Artist</th>
-      <th>Album</th>
-      <th>Description</th>
-      <th>Release</th>
-      <th>Rating</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @albums.each do |album| %>
-      <tr>
-        <td><%= image_tag album.image.url(:medium) %></td>
-        <td><%= album.artist %></td>
-        <td><%= album.album %></td>
-        <td><%= album.description %></td>
-        <td><%= album.release %></td>
-        <td><%= album.rating %></td>
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Album', new_album_path %>
