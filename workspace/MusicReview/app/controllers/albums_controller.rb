@@ -8,6 +8,7 @@ class AlbumsController < ApplicationController
 
 
   def show
+    @reviews = Review.where(album_id: @album.id).order('created_at DESC')
   end
 
 

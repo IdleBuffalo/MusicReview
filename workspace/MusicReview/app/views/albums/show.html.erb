@@ -38,8 +38,8 @@
           <% else %>
             <% @reviews.each do |review| %>
             <div class="reviews">
-            <p><%= reviews.rating %></p>
-            <p><%= reviews.comment %></p>
+            <p><%= review.rating %></p>
+            <p><%= review.comment %></p>
             </div>
         
             <% end %>
