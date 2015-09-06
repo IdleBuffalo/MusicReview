@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :reviews
+  
   devise_for :users
-  resources :albums
+  resources :albums do
+  	resources :reviews
+  end
 
   root 'albums#index'
 
