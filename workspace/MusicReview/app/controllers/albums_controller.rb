@@ -6,6 +6,13 @@ class AlbumsController < ApplicationController
     @albums = Album.all
   end
 
+  def search
+    if params[:search].present?
+      @albums = Album.search(params[:search])
+    else
+      @albums = Album.all
+    end   
+  end
 
   def show
     @reviews = Review.where(album_id: @album.id).order('created_at DESC')
