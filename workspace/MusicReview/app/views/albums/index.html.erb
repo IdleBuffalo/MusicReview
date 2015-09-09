@@ -1,7 +1,7 @@
 <% if !user_signed_in? %>
   <div class="jumbotron text-center">
     <h1>My First Real RoR app - Music Review</h1>
-    <p>Relying heavily on RoR guides, google search, Stack Overflow and wise men of RoR, this is my first web app, where you can Sign In & Out, write a review for an album, upload pictures and add ratings. There are some of them already.</p>
+    <p>Relying heavily on RoR guides, google search, Stack Overflow and wise men of RoR, this is my first web app, where you can Sign In & Out, write a review for an album, upload pictures (500 x 500 works best) and add ratings. Ratings are converted to stars with raly. js.</p>
     <p><%= link_to "Sign Up To Write a Review", new_user_registration_path, class: 'btn btn-primary btn-lg' %></p>
   </div>
 <% end %>
